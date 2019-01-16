@@ -194,8 +194,11 @@ module Liquid
         if property == "to_liquid".freeze
           e
         elsif e.respond_to?(:[])
-          r = e[property]
-          r.is_a?(Proc) ? r.call : r
+          begin
+            r = e[property]
+            r.is_a?(Proc) ? r.call : r
+          rescue
+          end
         end
       end
     end

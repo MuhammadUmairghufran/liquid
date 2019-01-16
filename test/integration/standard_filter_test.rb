@@ -364,6 +364,11 @@ class StandardFiltersTest < Minitest::Test
     assert_template_result "123", '{{ foo | map: "foo" }}', "foo" => TestEnumerable.new
   end
 
+  def test_map_returns_nil_on_2d_input_array
+    assert_template_result "", '{{ foo | map: "something" }}', "foo" => [[1], [2], [3]]
+  end
+
+
   def test_sort_works_on_enumerables
     assert_template_result "213", '{{ foo | sort: "bar" | map: "foo" }}', "foo" => TestEnumerable.new
   end
