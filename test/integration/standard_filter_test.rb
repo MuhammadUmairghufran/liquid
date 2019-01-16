@@ -364,7 +364,7 @@ class StandardFiltersTest < Minitest::Test
     assert_template_result "123", '{{ foo | map: "foo" }}', "foo" => TestEnumerable.new
   end
 
-  def test_map_returns_nil_on_2d_input_array
+  def test_map_returns_empty_on_2d_input_array
     assert_template_result "", '{{ foo | map: "something" }}', "foo" => [[1], [2], [3]]
   end
 
