@@ -197,7 +197,7 @@ module Liquid
           begin
             r = e[property]
             r.is_a?(Proc) ? r.call : r
-          rescue
+          rescue TypeError
           end
         end
       end
