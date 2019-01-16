@@ -365,7 +365,12 @@ class StandardFiltersTest < Minitest::Test
   end
 
   def test_map_returns_empty_on_2d_input_array
-    assert_template_result "", '{{ foo | map: "something" }}', "foo" => [[1], [2], [3]]
+    foo = [
+      [1],
+      [2], 
+      [3]
+    ]
+    assert_template_result "", '{{ foo | map: "something" }}', "foo" => foo
   end
 
   def test_sort_works_on_enumerables
