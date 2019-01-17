@@ -196,10 +196,10 @@ module Liquid
         elsif e.respond_to?(:[])
           begin
             r = e[property]
-            r.is_a?(Proc) ? r.call : r
           rescue TypeError
-            nil
+            raise Liquid::ArgumentError
           end
+          r.is_a?(Proc) ? r.call : r
         end
       end
     end

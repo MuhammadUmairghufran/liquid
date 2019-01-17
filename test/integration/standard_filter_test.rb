@@ -370,7 +370,21 @@ class StandardFiltersTest < Minitest::Test
       [2], 
       [3]
     ]
-    assert_template_result "", '{{ foo | map: "something" }}', "foo" => foo
+
+    assert_raises Liquid::ArgumentError do
+      @filters.map(foo, "something")
+    end
+  end
+
+  def test_map_returns_empty_with_no_property
+    foo = [
+      [1],
+      [2], 
+      [3]
+    ]
+    assert_raises Liquid::ArgumentError do
+      @filters.map(foo, nil)
+    end
   end
 
   def test_sort_works_on_enumerables
